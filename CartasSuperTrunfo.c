@@ -20,11 +20,11 @@ int main() {
     // Leitura dos dados da carta 1
     printf("Digite os dados da carta 1:\n");
     printf("Estado (A a H): ");
-    scanf(" %c", &estado1);  // O espaço antes do %c serve para descartar qualquer caractere extra no buffer
+    scanf(" %c", &estado1);  
     printf("Código da Carta (ex: A01): ");
     scanf("%s", codigo1);
     printf("Nome da Cidade: ");
-    scanf(" %[^\n]s", cidade1);  // O %[^\n]s permite a leitura de uma string com espaços
+    scanf(" %[^\n]s", cidade1);  
     printf("População: ");
     scanf("%d", &populacao1);
     printf("Área (em km²): ");
