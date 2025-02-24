@@ -8,6 +8,7 @@ int main() {
     int populacao1;
     float area1, pib1;
     int pontosTuristicos1;
+    float densidadePopulacional1, pibPerCapita1;
 
     // Declaração das variáveis para a carta 2
     char estado2;
@@ -16,15 +17,16 @@ int main() {
     int populacao2;
     float area2, pib2;
     int pontosTuristicos2;
+    float densidadePopulacional2, pibPerCapita2;
 
     // Leitura dos dados da carta 1
     printf("Digite os dados da carta 1:\n");
     printf("Estado (A a H): ");
-    scanf(" %c", &estado1);  
+    scanf(" %c", &estado1);
     printf("Código da Carta (ex: A01): ");
     scanf("%s", codigo1);
     printf("Nome da Cidade: ");
-    scanf(" %[^\n]s", cidade1);  
+    scanf(" %[^\n]s", cidade1);
     printf("População: ");
     scanf("%d", &populacao1);
     printf("Área (em km²): ");
@@ -51,25 +53,27 @@ int main() {
     printf("Número de Pontos Turísticos: ");
     scanf("%d", &pontosTuristicos2);
 
-    // Exibição dos dados da carta 1
-    printf("\nCarta 1:\n");
-    printf("Estado: %c\n", estado1);
-    printf("Código: %s\n", codigo1);
-    printf("Nome da Cidade: %s\n", cidade1);
-    printf("População: %d\n", populacao1);
-    printf("Área: %.2f km²\n", area1);
-    printf("PIB: %.2f bilhões de reais\n", pib1);
-    printf("Número de Pontos Turísticos: %d\n", pontosTuristicos1);
+    // Cálculo da densidade populacional e PIB per capita para as duas cartas
+    densidadePopulacional1 = populacao1 / area1;
+    pibPerCapita1 = pib1 * 1000000000 / populacao1; // Convertendo PIB para reais
 
-    // Exibição dos dados da carta 2
-    printf("\nCarta 2:\n");
-    printf("Estado: %c\n", estado2);
-    printf("Código: %s\n", codigo2);
-    printf("Nome da Cidade: %s\n", cidade2);
-    printf("População: %d\n", populacao2);
-    printf("Área: %.2f km²\n", area2);
-    printf("PIB: %.2f bilhões de reais\n", pib2);
-    printf("Número de Pontos Turísticos: %d\n", pontosTuristicos2);
+    densidadePopulacional2 = populacao2 / area2;
+    pibPerCapita2 = pib2 * 1000000000 / populacao2; // Convertendo PIB para reais
+
+    // Escolha do atributo para comparação (no código, estamos escolhendo o PIB per capita)
+    printf("\nComparação de cartas (Atributo: PIB per capita):\n");
+
+    printf("\nCarta 1 - %s (%s): %.2f bilhões de reais\n", cidade1, codigo1, pibPerCapita1);
+    printf("Carta 2 - %s (%s): %.2f bilhões de reais\n", cidade2, codigo2, pibPerCapita2);
+
+    // Comparação do PIB per capita
+    if (pibPerCapita1 > pibPerCapita2) {
+        printf("\nResultado: Carta 1 (%s) venceu!\n", cidade1);
+    } else if (pibPerCapita1 < pibPerCapita2) {
+        printf("\nResultado: Carta 2 (%s) venceu!\n", cidade2);
+    } else {
+        printf("\nResultado: Empate!\n");
+    }
 
     return 0;
 }
